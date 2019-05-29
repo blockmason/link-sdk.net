@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: "/opt/dotnet/project"
+  working_directory: "/docker/project"
   docker:
   - image: blockmason/dotnet:2.2
 
@@ -26,19 +26,19 @@ jobs:
     steps:
     - checkout
     - persist_to_workspace:
-        root: /opt/dotnet
+        root: /docker
         paths:
         - project
   build-sources:
     <<: *defaults
     steps:
     - attach_workspace:
-        at: /opt/dotnet
+        at: /docker
     - run:
         name: Building sources
         command: dotnet publish --configuration Release Blockmason.Link/Blockmason.Link.csproj
     - persist_to_workspace:
-        root: /opt/dotnet
+        root: /docker
         paths:
         - project/Blockmason.Link/obj
         - project/Blockmason.Link/bin
@@ -46,12 +46,12 @@ jobs:
     <<: *defaults
     steps:
     - attach_workspace:
-        at: /opt/dotnet
+        at: /docker
     - run:
         name: Building tests
         command: dotnet publish --configuration Release Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
     - persist_to_workspace:
-        root: /opt/dotnet
+        root: /docker
         paths:
         - project/Blockmason.Link.Tests/obj
         - project/Blockmason.Link.Tests/bin
@@ -59,9 +59,9 @@ jobs:
     <<: *defaults
     steps:
     - attach_workspace:
-        at: /opt/dotnet
+        at: /docker
     - run:
         name: Testing
-        command: dotnet test --configuration Release --logger xml --results-directory reports/xunit Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+        command: dotnet test --configuration Release --logger:trx --results-directory reports/trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
     - store_test_results:
-        path: reports/xunit
+        path: reports/trx
