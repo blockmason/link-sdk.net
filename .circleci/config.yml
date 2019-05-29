@@ -9,16 +9,13 @@ workflows:
   version: 2
   default:
     jobs:
-    - build-sources:
+    - build:
         requires:
         - initialize
-    - build-tests:
-        requires:
-        - build-sources
     - initialize
     - test:
         requires:
-        - build-tests
+        - build
 
 jobs:
   initialize:
@@ -29,7 +26,7 @@ jobs:
         root: /docker
         paths:
         - project
-  build-sources:
+  build:
     <<: *defaults
     steps:
     - attach_workspace:
@@ -42,19 +39,6 @@ jobs:
         paths:
         - project/Blockmason.Link/obj
         - project/Blockmason.Link/bin
-  build-tests:
-    <<: *defaults
-    steps:
-    - attach_workspace:
-        at: /docker
-    - run:
-        name: Building tests
-        command: dotnet publish --configuration Release Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
-    - persist_to_workspace:
-        root: /docker
-        paths:
-        - project/Blockmason.Link.Tests/obj
-        - project/Blockmason.Link.Tests/bin
   test:
     <<: *defaults
     steps:
@@ -66,4 +50,4 @@ jobs:
           dotnet test --logger trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
           find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit
     - store_test_results:
-        path: TestResults
+        path: Blockmason.Link.Tests/TestResults
