@@ -62,7 +62,7 @@ jobs:
         at: /docker
     - run:
         name: Testing
-        command: dotnet test --configuration Release --logger trx --no-build Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+        command: dotnet test --logger trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
     - run:
         name: Preparing test report
         command: |
