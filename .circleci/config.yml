@@ -62,6 +62,12 @@ jobs:
         at: /docker
     - run:
         name: Testing
-        command: dotnet test --configuration Release --logger:trx --results-directory reports/trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+        command: dotnet test --configuration Release --logger trx --no-build --results-directory TestResults Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+    - run:
+        name: Preparing test report
+        command: |
+          find TestResults -type f
+          dotnet tool install -g trx2junit
+          /docker/.dotnet/tools/trx2junit 'TestResults/**/*.trx'
     - store_test_results:
-        path: reports/trx
+        path: TestResults
