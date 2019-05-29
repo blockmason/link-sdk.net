@@ -36,12 +36,12 @@ jobs:
         at: /opt/dotnet
     - run:
         name: Building sources
-        command: dotnet publish --configuration Release Link/Link.csproj
+        command: dotnet publish --configuration Release Blockmason.Link/Blockmason.Link.csproj
     - persist_to_workspace:
         root: /opt/dotnet
         paths:
-        - project/Link/obj
-        - project/Link/bin
+        - project/Blockmason.Link/obj
+        - project/Blockmason.Link/bin
   build-tests:
     <<: *defaults
     steps:
@@ -49,12 +49,12 @@ jobs:
         at: /opt/dotnet
     - run:
         name: Building tests
-        command: dotnet publish --configuration Release Link.Tests/Link.Tests.csproj
+        command: dotnet publish --configuration Release Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
     - persist_to_workspace:
         root: /opt/dotnet
         paths:
-        - project/Link.Tests/obj
-        - project/Link.Tests/bin
+        - project/Blockmason.Link.Tests/obj
+        - project/Blockmason.Link.Tests/bin
   test:
     <<: *defaults
     steps:
@@ -62,4 +62,4 @@ jobs:
         at: /opt/dotnet
     - run:
         name: Testing
-        command: dotnet test --configuration Release Link.Tests/Link.Tests.csproj
+        command: dotnet test --configuration Release Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
