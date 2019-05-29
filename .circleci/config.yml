@@ -47,8 +47,14 @@ jobs:
     - run:
         name: Testing
         command: |
-          dotnet test --logger trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
-          find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit --output Blockmason.Link.Tests/TestResults/junit
-          mv $(find Blockmason.Link.Tests/TestResults -type f -name '*.xml' | xargs) Blockmason.Link.Tests/TestResults/junit/results.xml
+          if dotnet test --logger trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj; then
+            find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit --output Blockmason.Link.Tests/TestResults/junit
+            mv $(find Blockmason.Link.Tests/TestResults -type f -name '*.xml' | xargs) Blockmason.Link.Tests/TestResults/junit/results.xml
+            exit 0
+          else
+            find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit --output Blockmason.Link.Tests/TestResults/junit
+            mv $(find Blockmason.Link.Tests/TestResults -type f -name '*.xml' | xargs) Blockmason.Link.Tests/TestResults/junit/results.xml
+            exit 1
+          fi
     - store_test_results:
         path: Blockmason.Link.Tests/TestResults
