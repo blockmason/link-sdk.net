@@ -1,5 +1,5 @@
 using Xunit;
-using Link;
+using Blockmason.Link;
 using System.Collections.Generic;
 
 namespace Link.UnitTests {

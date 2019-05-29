@@ -1,4 +1,4 @@
-using Link.OAuth2;
+using Blockmason.Link.OAuth2;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Link {
+namespace Blockmason.Link {
   public class Project {
     public static async Task<Project> Create(string clientId, string clientSecret) {
       Session session = await Session.Create(clientId, clientSecret);

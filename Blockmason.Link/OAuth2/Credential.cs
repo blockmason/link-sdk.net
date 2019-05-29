@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Link.OAuth2 {
+namespace Blockmason.Link.OAuth2 {
   public class Credential {
     public class Contract {
       public string access_token;

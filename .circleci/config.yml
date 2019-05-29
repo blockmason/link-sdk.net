@@ -1,0 +1,65 @@
+version: 2
+
+defaults: &defaults
+  working_directory: "/opt/dotnet/project"
+  docker:
+  - image: blockmason/dotnet:2.2
+
+workflows:
+  version: 2
+  default:
+    jobs:
+    - build-sources:
+        requires:
+        - initialize
+    - build-tests:
+        requires:
+        - build-sources
+    - initialize
+    - test:
+        requires:
+        - build-tests
+
+jobs:
+  initialize:
+    <<: *defaults
+    steps:
+    - checkout
+    - persist_to_workspace:
+        root: /opt/dotnet
+        paths:
+        - project
+  build-sources:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: /opt/dotnet
+    - run:
+        name: Building sources
+        command: dotnet publish --configuration Release Link/Link.csproj
+    - persist_to_workspace:
+        root: /opt/dotnet
+        paths:
+        - project/Link/obj
+        - project/Link/bin
+  build-tests:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: /opt/dotnet
+    - run:
+        name: Building tests
+        command: dotnet publish --configuration Release Link.Tests/Link.Tests.csproj
+    - persist_to_workspace:
+        root: /opt/dotnet
+        paths:
+        - project/Link.Tests/obj
+        - project/Link.Tests/bin
+  test:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: /opt/dotnet
+    - run:
+        name: Testing
+        command: dotnet test --configuration Release Link.Tests/Link.Tests.csproj

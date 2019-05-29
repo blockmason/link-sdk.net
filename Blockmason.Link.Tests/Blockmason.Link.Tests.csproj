@@ -8,6 +8,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Link\Link.csproj" />
+    <ProjectReference Include="..\Blockmason.Link\Blockmason.Link.csproj"/>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Link.OAuth2.Grant {
+namespace Blockmason.Link.OAuth2.Grant {
   public class ClientCredentialsGrant {
     public class Contract {
       public string client_id;

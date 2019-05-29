@@ -1,4 +1,4 @@
-using Link.OAuth2.Grant;
+using Blockmason.Link.OAuth2.Grant;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Link.OAuth2 {
+namespace Blockmason.Link.OAuth2 {
   public class Session {
     public const string DEFAULT_BASE_URL = "https://api.block.mason.link";
 
