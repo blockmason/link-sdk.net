@@ -66,8 +66,7 @@ jobs:
     - run:
         name: Preparing test report
         command: |
-          find Blockmason.Link.Tests -type f
           dotnet tool install -g trx2junit
-          /docker/.dotnet/tools/trx2junit 'Blockmason.Link.Tests/Results/**/*.trx'
+          find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit
     - store_test_results:
-        path: Blockmason.Link.Tests/Results
+        path: Results
