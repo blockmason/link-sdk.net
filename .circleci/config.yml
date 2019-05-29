@@ -62,4 +62,6 @@ jobs:
         at: /opt/dotnet
     - run:
         name: Testing
-        command: dotnet test --configuration Release Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+        command: dotnet test --configuration Release --logger xml --results-directory reports/xunit Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
+    - store_test_results:
+        path: reports/xunit
