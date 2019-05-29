@@ -48,6 +48,6 @@ jobs:
         name: Testing
         command: |
           dotnet test --logger trx Blockmason.Link.Tests/Blockmason.Link.Tests.csproj
-          find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit
+          find . -type f -name '*.trx' | xargs /docker/.dotnet/tools/trx2junit --output Blockmason.Link.Tests/TestResults/junit
     - store_test_results:
         path: Blockmason.Link.Tests/TestResults
