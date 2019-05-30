@@ -43,7 +43,7 @@ namespace Blockmason.Link {
       });
     }
 
-    private async Task<T> WithValidSession<T>(Func<Session, Task<T>> WithSession) {
+    private async T WithValidSession<T>(Func<Session, Task<T>> WithSession) {
       try {
         T result = await WithSession(m_Session);
         return result;
