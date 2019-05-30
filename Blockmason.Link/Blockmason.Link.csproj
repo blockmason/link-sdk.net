@@ -14,6 +14,7 @@
     <Optimize>true</Optimize>
     <OutputType>Library</OutputType>
     <Owners>canterberry</Owners>
+    <PackageIconUrl>https://mason.link/nuget.png</PackageIconUrl>
     <PackageId>$(RootNamespace)</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://blockmason.link/</PackageProjectUrl>
