@@ -7,7 +7,9 @@ namespace Blockmason.Link.Tests {
     }
 
     public new Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) {
-      return new HttpResponseMessage();
+      return new Task<HttpResponseMessage>(() => {
+        return new HttpResponseMessage();
+      });
     }
   }
 }
