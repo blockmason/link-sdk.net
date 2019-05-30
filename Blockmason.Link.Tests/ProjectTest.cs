@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Blockmason.Link.Tests {
   public class ProjectTest {
     [Fact]
-    public async void CanBeConstructed() {
+    public void CanBeConstructed() {
       Credential credential = new Credential();
       HttpClient httpClient = new MockHttpClient();
       string baseURL = "https://localhost:9000/not-a-live-server-dont-worry";
