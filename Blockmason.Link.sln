@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Link", "Link\Link.csproj", "{4005738B-2D04-4CE0-B1D6-9B15B89BAD22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockmason.Link", "Blockmason.Link\Blockmason.Link.csproj", "{4005738B-2D04-4CE0-B1D6-9B15B89BAD22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Link.Tests", "Link.Tests\Link.Tests.csproj", "{731E7305-5D5C-4793-A6AF-3544303CA6E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blockmason.Link.Tests", "Blockmason.Link.Tests\Blockmason.Link.Tests.csproj", "{731E7305-5D5C-4793-A6AF-3544303CA6E3}"
 EndProject
 Global
         GlobalSection(SolutionConfigurationPlatforms) = preSolution
