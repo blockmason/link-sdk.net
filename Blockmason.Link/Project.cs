@@ -26,15 +26,31 @@ namespace Blockmason.Link {
     }
 
     public Task<T> Post<T>(string path, object inputs) {
-      return m_Session.SendWithBody<T>(HttpMethod.Post, $"/v1{path}", inputs);
+      return WithValidSession((session) => {
+        return session.SendWithBody<T>(HttpMethod.Post, $"/v1{path}", inputs);
+      });
     }
 
     public Task<T> Get<T>(string path, object inputs) {
-      return m_Session.SendWithQuery<T>(HttpMethod.Get, $"/v1{path}", inputs);
+      return WithValidSession((session) => {
+        return session.SendWithQuery<T>(HttpMethod.Get, $"/v1{path}", inputs);
+      });
     }
 
     public Task<T> Get<T>(string path) {
-      return m_Session.Send<T>(HttpMethod.Get, $"/v1{path}");
+      return WithValidSession((session) => {
+        return session.Send<T>(HttpMethod.Get, $"/v1{path}");
+      });
+    }
+
+    private async Task<T> WithValidSession<T>(Func<Session, Task<T>> WithSession) {
+      try {
+        T result = await WithSession(m_Session);
+        return result;
+      } catch {
+        m_Session = await m_Session.Refresh();
+        return WithSession(m_Session);
+      }
     }
   }
 }
