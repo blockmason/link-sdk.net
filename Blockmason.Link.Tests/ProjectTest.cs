@@ -1,8 +1,8 @@
-using Xunit;
 using Blockmason.Link;
 using Blockmason.Link.OAuth2;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Blockmason.Link.Tests {
   public class ProjectTest {
