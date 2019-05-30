@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for PROJECT_NAME in Blockmason.Link Blockmason.Link.Tests; do
+  for OUTPUT_DIR in bin obj; do
+    if [ ! -d "${PROJECT_NAME}/${OUTPUT_DIR}" ]; then
+      mkdir "${PROJECT_NAME}/${OUTPUT_DIR}"
+      sudo chown 1337:1337 "${PROJECT_NAME}/${OUTPUT_DIR}"
+    fi
+  done
+done
+
+exec docker run --volume $PWD:/docker/project:rw --workdir /docker/project blockmason/dotnet:2.2 dotnet $*
