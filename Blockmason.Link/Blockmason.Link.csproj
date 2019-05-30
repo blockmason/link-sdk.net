@@ -1,8 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <AssemblyName>$(RootNamespace)</AssemblyName>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <Authors>canterberry</Authors>
+    <CodeAnalysisRuleset>Blockmason.Link.ruleset</CodeAnalysisRuleset>
+    <Company>Blockmason</Company>
+    <Configuration>Release</Configuration>
+    <Description>Library for interacting with a Blockmason Link project, a serverless infrastructure product.</Description>
+    <Deterministic>true</Deterministic>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoLogo>true</NoLogo>
+    <Optimize>true</Optimize>
+    <OutputType>Library</OutputType>
+    <Owners>canterberry</Owners>
+    <PackageId>$(RootNamespace)</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://blockmason.link/</PackageProjectUrl>
+    <PackageRepositoryType>git</PackageRepositoryType>
+    <PackageRepositoryUrl>https://github.com/blockmason/link-sdk.net.git</PackageRepositoryUrl>
+    <PackageTags>cloud serverless blockchain ethereum web service</PackageTags>
+    <Product>Blockmason Link</Product>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RootNamespace>Blockmason.Link</RootNamespace>
+    <Summary>Access your Blockmason Link project with ease.</Summary>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Title>Blockmason Link SDK</Title>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Utf8Output>true</Utf8Output>
+    <VersionPrefix>1.0.1</VersionPrefix>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
   </ItemGroup>
 </Project>
+
+
+
