@@ -6,7 +6,7 @@ namespace Blockmason.Link.Tests {
     public MockHttpClient() : base() {
     }
 
-    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) {
+    public new Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) {
       return new HttpResponseMessage();
     }
   }
