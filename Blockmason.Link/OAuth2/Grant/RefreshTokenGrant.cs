@@ -11,6 +11,7 @@ namespace Blockmason.Link.OAuth2.Grant {
       }
 
       public Contract(string refreshToken) {
+        grant_type = "refresh_token";
         refresh_token = refreshToken;
       }
     }
