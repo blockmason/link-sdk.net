@@ -1,4 +1,4 @@
-# Blockmason Link SDK for JavaScript
+# Blockmason Link SDK for .NET
 
 [![CircleCI][1]][2]
 
