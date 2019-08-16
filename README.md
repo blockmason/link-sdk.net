@@ -68,5 +68,5 @@ await project.Post<object>("/mint", new {
 [3]: https://www.nuget.org/
 [4]: https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files
 [5]: https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x
-[6]: https://blockmason.link/wp-content/uploads/2019/07/LINK-SDK.png
+[6]: https://mason.link/sdk.png
 [7]: https://blockmason.link/
